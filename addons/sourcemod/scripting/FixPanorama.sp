@@ -325,7 +325,11 @@ public Action Timer_ScoreboardHUD(Handle timer, int caller) {
 
 		if (bShow && g_bIsEnabled[caller]) {
 			SetHudTextParamsEx(0.01, 0.37, 1.0, {255, 255, 255, 255}, {0, 0, 0, 255}, 0, 0.0, 0.0, 0.0);
+			#if defined _DynamicChannels_included_
+			ShowHudText(caller, GetDynamicChannel(3), txt);
+			#else
 			ShowHudText(caller, 3, txt);
+			#endif
 		}
 	} else {
 		for (int i = 1; i <= MaxClients; i++) {
@@ -369,7 +373,11 @@ public Action Timer_ScoreboardHUD(Handle timer, int caller) {
 
 				if (bShow && g_bIsEnabled[i]) {
 					SetHudTextParamsEx(0.01, 0.37, 1.0, {255, 255, 255, 255}, {0, 0, 0, 255}, 0, 0.0, 0.0, 0.0);
+					#if defined _DynamicChannels_included_
+					ShowHudText(i, GetDynamicChannel(3), txt);
+					#else
 					ShowHudText(i, 3, txt);
+					#endif
 				}
 			}
 		}
